@@ -3,7 +3,7 @@ from unittest import TestCase
 from manager.course_manager import CourseManager
 
 
-class Test(TestCase):
+class TestCourseManager(TestCase):
     def setUp(self):
         self.course_manager: CourseManager = CourseManager()
 
@@ -28,10 +28,10 @@ class Test(TestCase):
         self.course_manager.remove_course(course_code="MAT101")
         self.assertIsNone(self.course_manager.get_course_by_code(course_code="MAT101"))
 
-    def test_validate_course_code_must_be_letters_and_numbers_only(self):
+    def test_course_code_must_be_letters_and_numbers_only(self):
         with self.assertRaises(ValueError):
             self.course_manager.add_course(course_code="MAT101++", course_title="MATHMATICS")
 
-    def test_validate_course_title_must_be_letters_only(self):
+    def test_course_title_must_be_letters_only(self):
         with self.assertRaises(ValueError):
             self.course_manager.add_course(course_code="MAT101", course_title="MATHMAT222ICS")
